@@ -5,6 +5,7 @@ console.log(today);
 //画面が読み込まれた際に関数を呼び出して、～年～月を表示させる
 window.onload = function(){
     CalendarHeader(today);
+    CalendarTable();
 }
 
 //headerの位置に～年～月を表示
@@ -52,17 +53,20 @@ const week = ["日", "月", "火", "水", "木", "金", "土"];
 
 //テーブルの作成
 function CalendarTable(){
-    var html_table = "";
-    var html_tr = "";
-    
-    html_table += '<table>';
-    html_tr += '<tr>';
+    const html_table = document.createElement("table");
+    const html_thead = document.createElement("thead");
+    const html_tr = document.createElement("tr");
     for(let i = 0; i < week.length; i++){
-        html_th += '<th>' + week[i] + "</th>"
+        const html_th = document.createElement("th");
+        const text = document.createTextNode(week[i]);
+        if(text.data == "日"){
+            html_th.classList.add("sunday");
+        }
+        html_th.appendChild(text);
+        html_tr.appendChild(html_th);
     }
-    html_tr += '</tr>';
-
-    
-
-   
+    html_thead.appendChild(html_tr);
+    html_table.appendChild(html_thead);  
+    const calender = document.getElementById("calender");
+    calender.appendChild(html_table);
 }

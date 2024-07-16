@@ -1,0 +1,11 @@
+table{
+    border: solid red 1px;
+}
+
+th{
+    border: solid;
+}
+
+.sunday{
+    background-color: red;
+}
