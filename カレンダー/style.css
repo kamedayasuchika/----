@@ -1,15 +1,15 @@
 table{
-    border: solid red 1px;
+    border: solid black 1px;
 }
 
 th{
-    border: solid;
+    border: 1px solid;
 }
 
-table tr th:first-child{
+tr th:first-child{
     color: red;
 } 
 
-table tr th:last-child{
+tr th:last-child{
     color: blue;
 } 
