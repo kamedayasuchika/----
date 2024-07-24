@@ -6,6 +6,10 @@ th{
     border: solid;
 }
 
-.sunday{
-    background-color: red;
-}
+table tr th:first-child{
+    color: red;
+} 
+
+table tr th:last-child{
+    color: blue;
+} 
