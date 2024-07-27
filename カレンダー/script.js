@@ -41,7 +41,8 @@ function CalendarTable(){
     
     //カレンダーの５行分の表示と、７列分の表示
     const tbody = document.createElement("tbody");
-    for(let t = 0; t < 5; t++){
+    tbody.id = "calendartbody";
+    for(let t = 0; t < 6; t++){
         const tbody_tr = document.createElement("tr");
         for(let j = 0; j < week.length; j++){
             //１週目
@@ -51,15 +52,22 @@ function CalendarTable(){
                 const textday = document.createTextNode(countDay);
                 tbody_th.appendChild(textday);
                 tbody_tr.appendChild(tbody_th);  
-            }else if(countDay != 0 && countDay < monthOfEndDay){ //２週目から最終週まで
+            }else if(countDay != 0 && countDay < monthOfEndDay && t < 5){ //２週目から５週目まで
                 const tbody_th = document.createElement("th");
                 countDay++;
                 const textday = document.createTextNode(countDay);
                 tbody_th.appendChild(textday);
                 tbody_tr.appendChild(tbody_th);
+            }else if(t == 5 && countDay < monthOfEndDay){
+                countDay++;
+                var joinweek = document.getElementById("calendartbody");  
+                var x = joinweek.rows[4];
+                console.log(x);
+                x.
+
             }else{ //取れてこない部分を空白で表示
                 const tbody_td = document.createElement("th");
-                const textday = document.createTextNode("/");
+                const textday = document.createTextNode("");
                 tbody_td.appendChild(textday);
                 tbody_tr.appendChild(tbody_td);
             } 
@@ -74,9 +82,10 @@ function CalendarTable(){
 //表示されているカレンダーの情報をリセットする処理(これをやらないとボタンを押す度にカレンダーが増え続ける。)
 function removeCalendar(){
     var calendartable = document.getElementById("calender");
-    while(calendartable.firstChild)
-    calendartable.removeChild(calendartable.firstChild);
-    CalendarTable();
+    while(calendartable.firstChild){
+        calendartable.removeChild(calendartable.firstChild);
+        CalendarTable();
+    }
 }
 
 //ボタンを押すたびに前年を表示する
