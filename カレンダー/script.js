@@ -63,8 +63,10 @@ function CalendarTable(){
                 var joinweek = document.getElementById("calendartbody");  
                 var x = joinweek.rows[4];
                 console.log(x);
-                x.
+                
 
+
+               
             }else{ //取れてこない部分を空白で表示
                 const tbody_td = document.createElement("th");
                 const textday = document.createTextNode("");
